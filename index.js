@@ -5,7 +5,8 @@ const iterative_binary_search = (array, total, target) => {
 
     // Loop until search space exhausted.
     while (low <= high) {
-        let mid = parseInt((low + high) / 2);
+        // Avoid integer overflow.
+        let mid = parseInt(low + (high - low) / 2);
 
         if (target == array[mid]) { // Target is found, return the mid value.
             return mid;
@@ -26,7 +27,8 @@ let recursive_binary_search = (array, low, high, target) => {
         return -1;
     }
 
-    let mid = parseInt((low + high) / 2);
+    // Avoid integer overflow.
+    let mid = parseInt(low + (high - low) / 2);
 
     if (target == array[mid]) { // Target is found, return the mid value.
         return mid;
